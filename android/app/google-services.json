@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "711267052133",
+    "project_id": "market-stack",
+    "storage_bucket": "market-stack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711267052133:android:b13fba8bc1c305737af48c",
+        "android_client_info": {
+          "package_name": "com.basalt.market_stack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711267052133-5ftlfjold0i8r9ggfa8867ekto1j8qtp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBm0_Wq4KARpzwt2OvJJuwIYONi-ARTkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711267052133-5ftlfjold0i8r9ggfa8867ekto1j8qtp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
