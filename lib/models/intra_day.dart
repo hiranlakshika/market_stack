@@ -1,13 +1,13 @@
-class InterDay {
+class IntraDay {
   final Pagination? pagination;
   final List<Data>? data;
 
-  InterDay({
+  IntraDay({
     this.pagination,
     this.data,
   });
 
-  InterDay.fromJson(Map<String, dynamic> json)
+  IntraDay.fromJson(Map<String, dynamic> json)
       : pagination = (json['pagination'] as Map<String, dynamic>?) != null
             ? Pagination.fromJson(json['pagination'] as Map<String, dynamic>)
             : null,
