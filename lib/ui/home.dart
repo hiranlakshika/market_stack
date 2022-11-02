@@ -1,6 +1,10 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
+import '../blocs/market_stack_bloc.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,6 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final MarketStackBloc _marketStackBloc = GetIt.I<MarketStackBloc>();
   String _selectedDate = '';
   String _dateCount = '';
   String _range = '';
@@ -34,7 +39,18 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: FutureBuilder(
+        builder: (BuildContext context, AsyncSnapshot<FirebaseRemoteConfig> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            _loadingWidget();
+          }
+          if (snapshot.hasData) {
+            debugPrint('Firebase Remote Config initialized');
+          }
+          return const SizedBox();
+        },
+        future: _marketStackBloc.initRemoteConfig(),
+      ) /*Stack(
         children: <Widget>[
           Positioned(
             left: 0,
@@ -66,7 +82,20 @@ class _HomeState extends State<Home> {
             ),
           )
         ],
-      ),
+      )*/
+      ,
+    );
+  }
+
+  Widget _loadingWidget() {
+    return const Center(
+      child: CircularProgressIndicator.adaptive(),
+    );
+  }
+
+  Widget _emptyItemsText() {
+    return const Center(
+      child: Text('Sorry we don\'t have anything to show'),
     );
   }
 }
